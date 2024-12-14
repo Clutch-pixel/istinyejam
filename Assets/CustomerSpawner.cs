@@ -52,6 +52,10 @@ public class CustomerSpawner : MonoBehaviour
             Vector3 spawnPosition = new Vector3(transform.position.x, randomY, 0);
             GameObject customer = Instantiate(customerPrefab, spawnPosition, Quaternion.identity);
 
+            // Add a Rigidbody2D for movement
+            Rigidbody2D rb = customer.AddComponent<Rigidbody2D>();
+            rb.gravityScale = 0; // Prevent the drink from falling
+
             // Set a random speed for the customer
             float randomSpeed = Random.Range(minSpeed, maxSpeed);
             customer.GetComponent<CustomerMovement>().SetSpeed(randomSpeed);

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CustomerMovement : MonoBehaviour
 {
+    
     private float speed; // Speed of the customer
     private bool movingLeft = true; // Determines direction (true = left, false = right)
     private Collider2D customerCollider; // Reference to the customer's collider
@@ -22,8 +23,9 @@ public class CustomerMovement : MonoBehaviour
         // Move in the current direction
         Vector3 direction = movingLeft ? Vector3.left : Vector3.right;
         transform.Translate(direction * speed * Time.deltaTime);
-    }
 
+    }
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Check if the customer was hit by a drink
@@ -42,4 +44,5 @@ public class CustomerMovement : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+    
 }
