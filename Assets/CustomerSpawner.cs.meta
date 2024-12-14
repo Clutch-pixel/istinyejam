@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: cdecafcfeee0cc343b7de5a14c5f1b9b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - customerPrefab: {instanceID: 0}
+  - timerText: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
