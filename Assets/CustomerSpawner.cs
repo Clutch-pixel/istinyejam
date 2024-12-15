@@ -5,7 +5,7 @@ using TMPro;
 public class CustomerSpawner : MonoBehaviour
 {
     public GameObject customerPrefab; // Drag your Customer Prefab here in Unity
-    public float minSpawnTime = 0.2f; // Minimum time between spawns
+    public float minSpawnTime = 0.1f; // Minimum time between spawns
     public float maxSpawnTime = 1f; // Maximum time between spawns
     public float minSpeed = 3f;       // Minimum speed for customers
     public float maxSpeed = 10f;      // Maximum speed for customers
@@ -55,8 +55,8 @@ public class CustomerSpawner : MonoBehaviour
             elapsedTime = 0f;
 
             // Increase the spawn values by 20%
-            minSpawnTime *= -1.2f;
-            maxSpawnTime *= -1.2f;
+            minSpawnTime *= 0.8f;
+            maxSpawnTime *= 0.8f;
             minSpeed *= 1.2f;
             maxSpeed *= 1.2f;
 

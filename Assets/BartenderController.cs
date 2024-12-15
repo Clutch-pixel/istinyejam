@@ -11,6 +11,7 @@ public class BartenderController : MonoBehaviour
     public float moveSpeed = 5f; // Speed at which the bartender moves horizontally
     public float moveSmoothTime = 0.1f; // Time to smoothly transition to the new lane
     public float moveCooldown = 0.7f; // Delay between movements (in seconds)
+    public float minMoveCooldown = 0.1f; // Minimum cooldown value
 
     private Vector3 targetPosition; // Target position the bartender should move towards
     private Vector3 velocity = Vector3.zero; // For smooth movement
@@ -73,6 +74,10 @@ public class BartenderController : MonoBehaviour
     {
         canMove = false; // Disable movement
         yield return new WaitForSeconds(moveCooldown); // Wait for the set cooldown time
+
+        // Decrease the moveCooldown by 20%, but ensure it never goes below the minimum value
+        moveCooldown = Mathf.Max(moveCooldown * 0.8f, minMoveCooldown);
+
         canMove = true; // Re-enable movement
     }
 }

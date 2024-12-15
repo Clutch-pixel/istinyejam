@@ -31,7 +31,7 @@ public class DrinkThrower : MonoBehaviour
             throwCooldown = Mathf.Max(throwCooldown * cooldownDecreasePercentage, minThrowCooldown);
 
             // Increase the throwSpeed by 20%
-            throwSpeed *= 1.2f;
+            throwSpeed *= 1.5f;
 
             // Debug message for the new throw speed and cooldown time
             Debug.Log("New Throw Speed: " + throwSpeed + " | New Throw Cooldown: " + throwCooldown);

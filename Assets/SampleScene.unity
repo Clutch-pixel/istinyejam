@@ -442,6 +442,7 @@ MonoBehaviour:
   moveSpeed: 5
   moveSmoothTime: 0.1
   moveCooldown: 0.2
+  minMoveCooldown: 0.1
 --- !u!212 &410169840
 SpriteRenderer:
   m_ObjectHideFlags: 0
