@@ -1,22 +1,10 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;  // For UI Image
-using UnityEngine.SceneManagement;
 
 public class Projectile : MonoBehaviour
 {
-    Border border;
-    [Header("Game Managers")]
-    public ScoreManager scoreManager;
-    public Border borderScript;
-     
+    // Reference to the ScoreManager
+    private ScoreManager scoreManager;
 
-    void Awake()
-    {
-        border = FindObjectOfType<Border>();
-    }
     void Start()
     {
         // Get the ScoreManager from the scene
@@ -39,27 +27,7 @@ public class Projectile : MonoBehaviour
         if (other.gameObject.CompareTag("AlternateSprite"))
         {
             Destroy(other.gameObject);  // Destroy the projectile
-            
-            scoreManager?.AddScore(-200);
-            Debug.Log("Score reduced by 200");
-            border.health--;
-            borderScript?.UpdateHealthUI();
-            Debug.Log("Health reduced by 1 due to AlternateSprite");
-            
-            Destroy(gameObject);
-
-
-
         }
-
-
-
-            
-
-           
-
-        
-        
     }
     
 

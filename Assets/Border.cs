@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;  // For scene management
 public class Border : MonoBehaviour
 {
     // Health system
-    public int health = 3;
+    private int health = 3;
 
     // Array to hold references to the UI Image elements representing the health
     public Image[] healthImages;
