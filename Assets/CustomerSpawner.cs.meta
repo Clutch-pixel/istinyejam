@@ -5,7 +5,11 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - customerPrefab: {instanceID: 0}
+  - alternateSpritePrefab: {instanceID: 0}
   - timerText: {instanceID: 0}
+  - roundText: {instanceID: 0}
+  - scoreManager: {instanceID: 0}
+  - borderScript: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - DrinkThrower
   - Enemy
+  - sphere
+  - AlternateSprite
+  - Border
   layers:
   - Default
   - TransparentFX
