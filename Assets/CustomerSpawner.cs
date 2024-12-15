@@ -120,22 +120,22 @@ public class CustomerSpawner : MonoBehaviour
             float randomY = spawnYPositions[Random.Range(0, spawnYPositions.Length)];
 
             // Decide whether to spawn a normal or alternate sprite based on the spawn chance
-            GameObject customer = (Random.value <= spawnChance) ? Instantiate(alternateSpritePrefab) : Instantiate(customerPrefab);
+            GameObject Bomb = (Random.value <= spawnChance) ? Instantiate(alternateSpritePrefab) : Instantiate(customerPrefab);
 
             // Set the spawn position for the customer
             Vector3 spawnPosition = new Vector3(transform.position.x, randomY, 0);
-            customer.transform.position = spawnPosition;
+            Bomb.transform.position = spawnPosition;
 
 
             // Set a random speed for the customer
             float randomSpeed = Random.Range(minSpeed, maxSpeed);
-            customer.GetComponent<CustomerMovement>().SetSpeed(randomSpeed);
+            Bomb.GetComponent<CustomerMovement>().SetSpeed(randomSpeed);
 
             // If alternate sprite is used, adjust its collider properties
             if (Random.value <= spawnChance)
             {
-                // Adjust the collider for the alternate sprite (example for CircleCollider2D)
-                CircleCollider2D collider = customer.GetComponent<CircleCollider2D>();
+                // Adjust the collider for the alternate sprite (example for BombCollider2D)
+                CircleCollider2D collider = Bomb.GetComponent<CircleCollider2D>();
                 if (collider != null)
                 {
                     collider.radius = 0.5f;
@@ -170,6 +170,8 @@ public class CustomerSpawner : MonoBehaviour
         {
             // Just destroy the sprite if it hits the border
             Destroy(gameObject);
+            
+
         }
     }
 }
