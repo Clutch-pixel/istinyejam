@@ -524,6 +524,9 @@ MonoBehaviour:
   drinkPrefab: {fileID: 932223922}
   throwSpeed: 10
   throwCooldown: 0.7
+  cooldownDecreasePercentage: 0.9
+  minThrowCooldown: 0.1
+  maxCycleTime: 60
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,6 +756,7 @@ MonoBehaviour:
   - {fileID: 1839337671}
   - {fileID: 1778613822}
   - {fileID: 162651516}
+  gameEndSceneName: GameEnd
 --- !u!61 &1398723878
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -787,7 +791,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1398723876}
   m_LocalRotation: {x: -0.10587714, y: 0.34515986, z: -0.23417115, w: 0.902673}
-  m_LocalPosition: {x: -5.21, y: -1.03, z: 0.58}
+  m_LocalPosition: {x: -6.53, y: -1.48, z: 0.58}
   m_LocalScale: {x: -0.06, y: 1.45, z: 1.42}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -911,7 +915,10 @@ MonoBehaviour:
   - -1
   - -4
   maxSpawningTime: 60
+  restartDelay: 2
   timerText: {fileID: 123299435}
+  bartenderController: {fileID: 0}
+  minCooldown: 0.2
 --- !u!222 &1674363979
 CanvasRenderer:
   m_ObjectHideFlags: 0

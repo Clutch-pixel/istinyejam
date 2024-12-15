@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro; // Add this to support TextMeshPro
 
-
 public class BartenderController : MonoBehaviour
 {
     public float[] lanePositions; // Define Y positions for each lane in the Inspector
@@ -11,7 +10,7 @@ public class BartenderController : MonoBehaviour
     public float horizontalShift = 1f; // How much to move on the x-axis
     public float moveSpeed = 5f; // Speed at which the bartender moves horizontally
     public float moveSmoothTime = 0.1f; // Time to smoothly transition to the new lane
-    public float moveCooldown = 0.2f;// Delay between movements (in seconds)
+    public float moveCooldown = 0.7f; // Delay between movements (in seconds)
 
     private Vector3 targetPosition; // Target position the bartender should move towards
     private Vector3 velocity = Vector3.zero; // For smooth movement
@@ -19,7 +18,6 @@ public class BartenderController : MonoBehaviour
 
     void Start()
     {
-
         // Set the initial position based on the first lane's Y value
         targetPosition = new Vector3(transform.position.x, lanePositions[currentLane], transform.position.z);
 

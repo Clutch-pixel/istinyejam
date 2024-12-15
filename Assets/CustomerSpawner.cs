@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI; // Ensure this namespace is included to use UI Text
 using TMPro;
 
 public class CustomerSpawner : MonoBehaviour
@@ -14,13 +13,29 @@ public class CustomerSpawner : MonoBehaviour
     public float[] spawnXPositions = { 4f, 1f, -1f, -4f }; // X positions for lanes, you can adjust as needed
 
     public float maxSpawningTime = 10f; // Time after which customer spawning will stop (in seconds)
+    public float restartDelay = 4f;     // Delay before restarting the spawning process (in seconds)
 
     private float elapsedTime = 0f; // Timer to track elapsed time for spawning
     public TextMeshProUGUI timerText; // UI Text to display the remaining time
+    public BartenderController bartenderController; // Reference to the BartenderController script
+
+    public float minCooldown = 0.1f; // Minimum cooldown value (you can adjust this value)
+    private bool isSpawning = false;  // To prevent starting multiple coroutines
 
     void Start()
     {
-        StartCoroutine(SpawnCustomer());
+        // Start the spawning process if not already spawning
+        if (!isSpawning)
+        {
+            isSpawning = true;
+            StartCoroutine(SpawnCustomer());
+        }
+
+        // Ensure the BartenderController is assigned
+        if (bartenderController == null)
+        {
+            bartenderController = GetComponent<BartenderController>();
+        }
     }
 
     void Update()
@@ -33,8 +48,32 @@ public class CustomerSpawner : MonoBehaviour
         }
         else
         {
+            // When time's up, reset the timer and increase the parameters by 20%
             timerText.text = "Spawning Stopped!";
+
+            // Reset the timer for the next round
+            elapsedTime = 0f;
+
+            // Increase the spawn values by 20%
+            minSpawnTime *= -1.2f;
+            maxSpawnTime *= -1.2f;
+            minSpeed *= 1.2f;
+            maxSpeed *= 1.2f;
+
+            // Start the delay before restarting the spawning process
+            StartCoroutine(RestartSpawningWithDelay());
         }
+    }
+
+    // Coroutine to handle the delay before restarting the spawning process
+    IEnumerator RestartSpawningWithDelay()
+    {
+        // Wait for the specified restart delay
+        yield return new WaitForSeconds(restartDelay);
+
+        // After the delay, restart the customer spawning process with updated values
+        isSpawning = true;
+        StartCoroutine(SpawnCustomer());
     }
 
     IEnumerator SpawnCustomer()
@@ -66,5 +105,6 @@ public class CustomerSpawner : MonoBehaviour
 
         // After maxSpawningTime, stop spawning and log a message
         Debug.Log("Customer Spawning Stopped!");
+        isSpawning = false; // Allow restart
     }
 }
